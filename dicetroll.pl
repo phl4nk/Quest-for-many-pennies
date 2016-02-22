@@ -12,7 +12,7 @@ use Data::Dumper;
 my $accessToken = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 my $wager = '0.00000001';
 my $chance = '49.5';
-my $direction = 1;
+my $direction = 0;
 my $server_endpoint = "https://betterbets.io/api/betDice/";
 my $weight = 0.0;
 my $i =0;
@@ -28,19 +28,15 @@ while (1){
 	my $resp = $ua->request($req);
 	if ($resp->is_success) {
 		my $bet = decode_json($resp->decoded_content);
-		# only increase bets by 5x then start over
-		if ($bet->{'win'} eq 0 and $i<5){
-			$weight += 0.00000001; 
-			$final_wager += $weight;
+		if ($bet->{'win'} eq 0 and $i<8){
+			my $rounded = sprintf("%.8f",($final_wager *=2.1));
+			$final_wager =$rounded;
 			$i++;
-			print "[-] increase bet: $final_wager\n";
-			sleep 0.1;
+			print "[-] Balance: $bet->{'balance'}\n";
 		}else{
-			print "[+] Good bet\n";
-			$weight =0;
+			print "[+] Balance: $bet->{'balance'}\n";
 			$i =0;
 			$final_wager = $wager;
-			sleep 0.1;
 		}
 	}
 }
