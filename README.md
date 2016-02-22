@@ -17,7 +17,7 @@ Here are some initial resources to get us started, please add where appropriate.
 
 ##### Bitcoin Dice
 - https://satoshisfaucet.wordpress.com/faucet-bot-earn-0-2-btc-a-day/ - Tips, stratagies, bots and dice sites
-- https://betterbets.io/app/game/dice/ - dice game with API
+- https://betterbets.io/?ref=5849 - dice game with API
 
 ##### Bitcoin Facuets *(not essential for project, but could help increase base funds)*:
 - https://faucetbox.com/
